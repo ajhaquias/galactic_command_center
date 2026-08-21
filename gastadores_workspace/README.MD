@@ -44,11 +44,11 @@ Planquero, Nj
 
 -Part 2 – Damage Calculation Delegate (CalculateDamage) + Calculate Weapon Damage button
 
+
+
 ===================Joven, Jane Cassandra===================
 
 -Part 3 – CargoSystem class + ReceiveCargo() method
-
-===================Aparejado, Regine===================
 
 -Part 3 – Event Subscription + CargoReceivedHandler
 
@@ -63,6 +63,11 @@ Planquero, Nj
 ===================Ordonez, Mariel Desirei===================
 
 -Integrator – AppendLog helper method + Clear Log button + Final connection of all parts
+
+===================Aparejado, Regine===================
+
+-DOCUMENTATION
+
 
 
 
