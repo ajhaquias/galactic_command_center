@@ -39,8 +39,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textCommandLog = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConsoleAlert
@@ -153,7 +153,6 @@
             this.textCommandLog.Name = "textCommandLog";
             this.textCommandLog.Size = new System.Drawing.Size(422, 171);
             this.textCommandLog.TabIndex = 14;
-            this.textCommandLog.TextChanged += new System.EventHandler(this.textCommandLog_TextChanged);
             // 
             // label4
             // 
@@ -165,26 +164,25 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "COMMAND LOG";
             // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.btnClear.Font = new System.Drawing.Font("MS PGothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(519, 645);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(86, 30);
-            this.btnClear.TabIndex = 17;
-            this.btnClear.Text = "[ Clear ]";
-            this.btnClear.UseVisualStyleBackColor = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS PGothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 657);
+            this.label5.Location = new System.Drawing.Point(12, 651);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 18);
             this.label5.TabIndex = 18;
             this.label5.Text = "Status: Ready";
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(461, 642);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(107, 35);
+            this.btn_clear.TabIndex = 19;
+            this.btn_clear.Text = "[ Clear ]";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // Form1
             // 
@@ -192,8 +190,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(617, 695);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textCommandLog);
             this.Controls.Add(this.label3);
@@ -227,8 +225,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textCommandLog;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_clear;
     }
 }
 
