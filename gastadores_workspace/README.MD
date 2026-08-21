@@ -42,8 +42,6 @@ Part 1 – Custom Delegate (SystemAlert) + ConsoleLog method + Console Alert but
 
 Part 1 – FileLog method + Multicast (+=) + Multicast Alert button
 
-Part 2 – Support on Interface side
-
 ===================Mallari, Abegail===================
 
 Part 2 – Damage Calculation Delegate (CalculateDamage) + Calculate Weapon Damage button
