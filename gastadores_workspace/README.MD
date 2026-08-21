@@ -28,6 +28,8 @@ Main UI Design only (Form layout, buttons, labels, textCommandLog) – No code e
 
 Part 3 – Events (support)
 
+Part 3 – CargoSystem class + ReceiveCargo() method
+
 ===================Olinarez, Marckus Dylan===================
 
 Code Introduction + Overall structure + Conclusion
@@ -46,21 +48,21 @@ Part 1 – FileLog method + Multicast (+=) + Multicast Alert button
 
 Part 2 – Damage Calculation Delegate (CalculateDamage) + Calculate Weapon Damage button
 
+Part 2 – Support on Interface side
+
 ===================Joven, Jane Cassandra===================
 
 Part 2 – IUpgradable interface + Engine class + Upgrade Engine button
-
-Part 3 – CargoSystem class + ReceiveCargo() method
 
 ===================Planquero, Nj===================
 
 Part 3 – Event Subscription + CargoReceivedHandler
 
-Part 4 – Support
-
 ===================Lillio, Erichlyn Julia===================
 
 Part 4 – Custom remove accessor (“Listener removed.”) + Unsubscribe button
+
+Part 4 – Support
 
 ===================Ordonez, Mariel Desirei===================
 
