@@ -1,14 +1,23 @@
                                                                   MEMBERS LIST: 
 
-Aparejado, Regine 
+Aparejado, Regine
+
 Haquias, Aj
+
 Joven, Jane Cassandra
+
 Lillio, Erichlyn Julia
+
 Mallari, Abegail
+
 Marteja, Wences Manuel
+
 Mendoza, Paolo Miguel
+
 Olinarez, Marckus Dylan
+
 Ordonez, Mariel Desirei
+
 Planquero, Nj
 
                                                         DOCUMENTATION OF PARTS AND DESIGNATION:
