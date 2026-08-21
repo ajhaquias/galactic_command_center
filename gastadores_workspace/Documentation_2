@@ -10,10 +10,12 @@ namespace GalacticCommandCenter
         // ============================================================
         // Think of a delegate as a walkie-talkie.
         // It lets us call different methods using the same "channel".
+
         public delegate void SystemAlert(string message, int severity);
 
         // This is the first person who can answer the walkie-talkie.
         // It shows a message that looks like a console alert.
+
         private void ConsoleLog(string message, int severity)
         {
             AppendLog("[CONSOLE] Severity " + severity + ": " + message);
@@ -21,6 +23,7 @@ namespace GalacticCommandCenter
 
         // This is the second person who can answer the walkie-talkie.
         // We will use both ConsoleLog and FileLog together later (multicast).
+
         private void FileLog(string message, int severity)
         {
             AppendLog("[LOG] Severity " + severity + ": " + message);
@@ -31,6 +34,7 @@ namespace GalacticCommandCenter
         // ============================================================
         // An interface is like a job contract.
         // It says: "If you want to be upgradable, you MUST have an Upgrade method."
+
         public interface IUpgradable
         {
             void Upgrade();
@@ -38,6 +42,7 @@ namespace GalacticCommandCenter
 
         // The Engine class signed the contract (implements the interface).
         // So it is required to have an Upgrade method.
+
         public class Engine : IUpgradable
         {
             public void Upgrade()
@@ -47,14 +52,17 @@ namespace GalacticCommandCenter
         }
 
         // We create a real Engine object so we can use it.
+
         private Engine engine = new Engine();
 
         // This delegate is used for flexible calculations.
         // Unlike an interface (strict contract), a delegate is more flexible.
+
         public delegate int DamageCalculator(int power);
 
         // This method uses the delegate to calculate damage.
         // Formula: power * 2
+
         private int CalculateDamage(int power)
         {
             DamageCalculator calc = delegate (int p) { return p * 2; };
@@ -65,17 +73,21 @@ namespace GalacticCommandCenter
         // PART 3 & 4: EVENT + CUSTOM EVENT ACCESSORS
         // ============================================================
         // This class manages the cargo system.
+
         public class CargoSystem
         {
             // This is the private storage for the event.
+
             private EventHandler _onCargoReceived;
 
             // This is the event (think of it as an alarm).
             // We added special "add" and "remove" code (custom accessors).
+
             public event EventHandler OnCargoReceived
             {
                 // This runs when someone wants to LISTEN to the alarm.
                 // It acts like a security guard checking the person first.
+
                 add
                 {
                     MessageBox.Show("Security check passed.");
@@ -83,6 +95,7 @@ namespace GalacticCommandCenter
                 }
 
                 // This runs when someone wants to STOP listening to the alarm.
+
                 remove
                 {
                     MessageBox.Show("Listener removed.");
@@ -92,6 +105,7 @@ namespace GalacticCommandCenter
 
             // This method rings the alarm (raises the event).
             // When cargo arrives, everyone listening will be notified.
+
             public void ReceiveCargo()
             {
                 if (_onCargoReceived != null)
@@ -102,12 +116,14 @@ namespace GalacticCommandCenter
         }
 
         // We create a real CargoSystem object.
+
         private CargoSystem cargo = new CargoSystem();
 
         // ============================================================
         // FORM CONSTRUCTOR
         // ============================================================
         // This runs automatically when the program starts.
+
         public Form1()
         {
             InitializeComponent(); // Loads the buttons and textbox on the screen
@@ -117,6 +133,7 @@ namespace GalacticCommandCenter
         }
 
         // This is the method that reacts when the cargo alarm rings.
+
         private void CargoReceivedHandler(object sender, EventArgs e)
         {
             AppendLog("Cargo received! Processing started.");
@@ -128,6 +145,7 @@ namespace GalacticCommandCenter
 
         // Button 1: Send Console Alert
         // Only one method (ConsoleLog) is called.
+
         private void btnConsoleAlert_Click(object sender, EventArgs e)
         {
             SystemAlert alert = ConsoleLog;   // Give the walkie-talkie to ConsoleLog
@@ -136,6 +154,7 @@ namespace GalacticCommandCenter
 
         // Button 2: Send Multicast Alert
         // Two methods are called at the same time using +=
+
         private void btnMulticastAlert_Click(object sender, EventArgs e)
         {
             SystemAlert alert = ConsoleLog;
@@ -145,6 +164,7 @@ namespace GalacticCommandCenter
 
         // Button 3: Upgrade Engine
         // Calls the Upgrade method through the interface contract.
+
         private void btnUpgradeEngine_Click(object sender, EventArgs e)
         {
             engine.Upgrade();
@@ -153,6 +173,7 @@ namespace GalacticCommandCenter
 
         // Button 4: Calculate Weapon Damage
         // Uses the flexible delegate to calculate damage.
+
         private void btnCalculateDamage_Click(object sender, EventArgs e)
         {
             int damage = CalculateDamage(10);
@@ -161,6 +182,7 @@ namespace GalacticCommandCenter
 
         // Button 5: Receive Cargo
         // Rings the cargo alarm so the listener can react.
+
         private void btnReceiveCargo_Click(object sender, EventArgs e)
         {
             cargo.ReceiveCargo();
@@ -169,12 +191,14 @@ namespace GalacticCommandCenter
         // Button 6: Unsubscribe Listener
         // Stops listening to the cargo alarm.
         // This will also trigger the "Listener removed" message.
+
         private void btnUnsubscribe_Click(object sender, EventArgs e)
         {
             cargo.OnCargoReceived -= CargoReceivedHandler;
         }
 
         // Optional Button: Clear the log
+
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             txtLog.Clear();
@@ -185,6 +209,7 @@ namespace GalacticCommandCenter
         // ============================================================
         // This method writes messages into the Command Log textbox.
         // We use it everywhere so we can see what the program is doing.
+
         private void AppendLog(string message)
         {
             txtLog.AppendText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine);
