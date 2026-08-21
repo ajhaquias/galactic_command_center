@@ -8,17 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System;
+using System.Windows.Forms;
+
 namespace FinalUi
 {
     public partial class Form1 : Form
     {
-
-
-         =========================================================
-         PART 1 - Custom Delegate + ConsoleLog
-         Assigned to: Marteja
-         =========================================================
-
+        // =========================================================
+        // PART 1 - Custom Delegates
+        // Assigned to: Marteja and Mendoza
+        // =========================================================
 
         public delegate void SystemAlert(string message, int severity);
 
@@ -27,55 +27,30 @@ namespace FinalUi
             AppendLog("[CONSOLE] Severity " + severity + ": " + message);
         }
 
-
-
-         =========================================================
-         PART 1 - FileLog + Multicast
-         Assigned to: Mendoza
-         =========================================================
-
-
-
         private void FileLog(string message, int severity)
         {
             AppendLog("[LOG] Severity " + severity + ": " + message);
         }
 
-
-
-         =========================================================
-         PART 2 - Interface + Engine Class
-         Assigned to: Marteja and Mendoza
-         =========================================================
-
-
+        // =========================================================
+        // PART 2 - Delegates and Interface
+        // Assigned to: Mallari and Joven
+        // =========================================================
 
         public interface IUpgradable
         {
             void Upgrade();
         }
 
-        =========================================================
-         Implemented for Part 2 - Interface
-        =========================================================
-
-
         public class Engine : IUpgradable
         {
             public void Upgrade()
             {
-                 Implemented for Part 2 - Interface
+                // Upgrade logic
             }
         }
 
         private Engine engine = new Engine();
-
-
-         =========================================================
-         PART 2 - Delegate-based Damage Calculation
-         Assigned to: Mallari
-         =========================================================
-
 
         public delegate int DamageCalculator(int power);
 
@@ -85,51 +60,33 @@ namespace FinalUi
             return calc(power);
         }
 
-
-         =========================================================
-         PART 3 & PART 4 - CargoSystem with Custom Event Accessors
-         =========================================================
-
+        // =========================================================
+        // PART 3 - Events
+        // Assigned to: Haquias and Planquero
+        // =========================================================
 
         public class CargoSystem
         {
             private EventHandler _onCargoReceived;
 
-        =========================================================
-             PART 4 - Custom "add" accessor
-             Assigned to: Planquero
-             PART 4 - Custom "remove" accessor
-             Assigned to: Lillio
-        =========================================================
+            // =========================================================
+            // PART 4 - Event Accessors
+            // Assigned to: Ordonez and Lillio
+            // =========================================================
 
             public event EventHandler OnCargoReceived
             {
                 add
                 {
-
-        =========================================================
-                    Planquero - Security check when subscribing
-        =========================================================
-
                     MessageBox.Show("Security check passed.");
                     _onCargoReceived += value;
                 }
                 remove
                 {
-
-        =========================================================
-                    Lillio - Message when unsubscribing
-        =========================================================
-
-            MessageBox.Show("Listener removed.");
+                    MessageBox.Show("Listener removed.");
                     _onCargoReceived -= value;
                 }
             }
-
-        =========================================================
-            PART 3 - ReceiveCargo method
-            Assigned to: Joven
-        =========================================================
 
             public void ReceiveCargo()
             {
@@ -142,130 +99,80 @@ namespace FinalUi
 
         private CargoSystem cargo = new CargoSystem();
 
-
-        =========================================================
-        PART 3 - Event Subscription + Handler
-        Assigned to: Aparejado
-        =========================================================
-
         public Form1()
         {
             InitializeComponent();
-
-        =========================================================
-             Aparejado - Subscribe to the cargo event
-        =========================================================
-
-        cargo.OnCargoReceived += CargoReceivedHandler;
+            cargo.OnCargoReceived += CargoReceivedHandler;
         }
 
-         Aparejado - Event Handler
         private void CargoReceivedHandler(object sender, EventArgs e)
         {
             AppendLog("Cargo received! Processing started.");
         }
 
-        =========================================================
-        BUTTON CLICK EVENTS (Connected by respective members)
-        =========================================================
+        // =========================================================
+        // BUTTON EVENTS
+        // =========================================================
 
+        // Part 1 - Marteja
 
-
-                                =========================================================================================
-
-
-
-        =========================================================
-         PART 1 - Console Alert Button
-         Assigned to: Marteja
-        =========================================================
         private void btnConsoleAlert_Click(object sender, EventArgs e)
         {
-
             SystemAlert alert = ConsoleLog;
             alert("Engine failure!", 5);
-
         }
 
-        =========================================================
-         PART 1 - Multicast Alert Button
-         Assigned to: Mendoza
-        =========================================================
+        // Part 1 - Mendoza
 
         private void btnMulticastAlert_Click(object sender, EventArgs e)
         {
-
             SystemAlert alert = ConsoleLog;
-            alert += FileLog;          === Multicast Demonstration
+            alert += FileLog;
             alert("Engine failure!", 5);
-
         }
 
-        =========================================================
-         PART 2 - Upgrade Engine Button
-         Assigned to: Marteja and Mendoza
-        =========================================================
-
+        // Part 2 - Joven
 
         private void btnUpgradeEngine_Click(object sender, EventArgs e)
         {
-
             engine.Upgrade();
             AppendLog("Engine upgraded!");
-
         }
 
-        =========================================================
-         PART 2 - Calculate Damage Button
-         Assigned to: Mallari
-        =========================================================
+        // Part 2 - Mallari
 
         private void btnWeaponDamage_Click(object sender, EventArgs e)
         {
             int damage = CalculateDamage(10);
-            AppendLog($"Weapon Damage Calculated: {damage}");
+            AppendLog("Weapon Damage Calculated: " + damage);
         }
 
-        =========================================================
-         PART 3 - Receive Cargo Button
-         Assigned to: Joven
-        =========================================================
+        // Part 3 - Planquero / Haquias
 
         private void btnRecieveCargo_Click(object sender, EventArgs e)
         {
             cargo.ReceiveCargo();
         }
 
-        =========================================================
-         PART 4 - Unsubscribe Button
-         Assigned to: Lillio
-        =========================================================
+        // Part 4 - Lillio
 
         private void btnUnsubscribeListener_Click(object sender, EventArgs e)
         {
             cargo.OnCargoReceived -= CargoReceivedHandler;
         }
 
-        =========================================================
-         Optional Clear Log Button
-         Assigned to: Ordonez
-        =========================================================
-
-        private void AppendLog(string message)
-        {
-            textCommandLog.AppendText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine);
-        }
-
-
-         =========================================================
-         Shared Helper Method - Command Log
-         Assigned to: Ordonez (Integrator)
-         =========================================================
+        // Clear Log - Ordonez
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
             textCommandLog.Clear();
+        }
 
+        // Helper Method - Ordonez
+
+        private void AppendLog(string message)
+        {
+            textCommandLog.AppendText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine);
         }
 
         private void Form1_Load(object sender, EventArgs e)
