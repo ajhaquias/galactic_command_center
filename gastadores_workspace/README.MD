@@ -68,7 +68,7 @@ Part 4 – Support
 
 Part 4 – Custom add accessor (“Security check passed.”)
 
-Integrator – AppendLog helper method + Clear Log button + Final connection of all parts
+Integrator – AppendLog helper method + Clear Log button 
 
 ===================Aparejado, Regine===================
 
