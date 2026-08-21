@@ -18,6 +18,8 @@ namespace FinalUi
          PART 1 - Custom Delegate + ConsoleLog
          Assigned to: Marteja
          =========================================================
+
+
         public delegate void SystemAlert(string message, int severity);
 
         private void ConsoleLog(string message, int severity)
@@ -53,8 +55,9 @@ namespace FinalUi
             void Upgrade();
         }
 
+        =========================================================
          Implemented for Part 2 - Interface
-
+        =========================================================
 
 
         public class Engine : IUpgradable
@@ -91,32 +94,41 @@ namespace FinalUi
         {
             private EventHandler _onCargoReceived;
 
-
+        =========================================================
              PART 4 - Custom "add" accessor
              Assigned to: Planquero
              PART 4 - Custom "remove" accessor
              Assigned to: Lillio
-
+        =========================================================
 
             public event EventHandler OnCargoReceived
             {
                 add
                 {
+
+        =========================================================
                     Planquero - Security check when subscribing
+        =========================================================
+
                     MessageBox.Show("Security check passed.");
                     _onCargoReceived += value;
                 }
                 remove
                 {
+
+        =========================================================
                     Lillio - Message when unsubscribing
-                    MessageBox.Show("Listener removed.");
+        =========================================================
+
+            MessageBox.Show("Listener removed.");
                     _onCargoReceived -= value;
                 }
             }
 
+        =========================================================
             PART 3 - ReceiveCargo method
             Assigned to: Joven
-
+        =========================================================
             public void ReceiveCargo()
             {
                 if (_onCargoReceived != null)
@@ -138,8 +150,11 @@ namespace FinalUi
         {
             InitializeComponent();
 
+        =========================================================
              Aparejado - Subscribe to the cargo event
-            cargo.OnCargoReceived += CargoReceivedHandler;
+        =========================================================
+
+        cargo.OnCargoReceived += CargoReceivedHandler;
         }
 
          Aparejado - Event Handler
@@ -152,10 +167,16 @@ namespace FinalUi
         BUTTON CLICK EVENTS (Connected by respective members)
         =========================================================
 
-      =========================================================================================
 
+
+                                =========================================================================================
+
+
+
+        =========================================================
          PART 1 - Console Alert Button
          Assigned to: Marteja
+        =========================================================
         private void btnConsoleAlert_Click(object sender, EventArgs e)
         {
 
@@ -164,8 +185,11 @@ namespace FinalUi
 
         }
 
+        =========================================================
          PART 1 - Multicast Alert Button
          Assigned to: Mendoza
+        =========================================================
+
         private void btnMulticastAlert_Click(object sender, EventArgs e)
         {
 
@@ -175,9 +199,12 @@ namespace FinalUi
 
         }
 
-
+        =========================================================
          PART 2 - Upgrade Engine Button
          Assigned to: Marteja and Mendoza
+        =========================================================
+
+
         private void btnUpgradeEngine_Click(object sender, EventArgs e)
         {
 
@@ -186,33 +213,41 @@ namespace FinalUi
 
         }
 
-
+        =========================================================
          PART 2 - Calculate Damage Button
          Assigned to: Mallari
+        =========================================================
+
         private void btnWeaponDamage_Click(object sender, EventArgs e)
         {
             int damage = CalculateDamage(10);
             AppendLog($"Weapon Damage Calculated: {damage}");
         }
 
+        =========================================================
          PART 3 - Receive Cargo Button
-         Assigned to: Joven and Aparejado
+         Assigned to: Joven
+        =========================================================
 
         private void btnRecieveCargo_Click(object sender, EventArgs e)
         {
             cargo.ReceiveCargo();
         }
 
+        =========================================================
          PART 4 - Unsubscribe Button
          Assigned to: Lillio
-        
+        =========================================================
+
         private void btnUnsubscribeListener_Click(object sender, EventArgs e)
         {
             cargo.OnCargoReceived -= CargoReceivedHandler;
         }
 
+        =========================================================
          Optional Clear Log Button
          Assigned to: Ordonez
+        =========================================================
 
         private void AppendLog(string message)
         {
@@ -237,3 +272,9 @@ namespace FinalUi
         }
     }
 }
+
+                                                =========================================================
+
+CONCLUSION : OLINAREZ
+
+DOCUMENTATION : APAREJADO
