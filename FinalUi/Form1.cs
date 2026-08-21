@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace FinalUi
 {
     public partial class Form1 : Form
     {
-   
+        // =========================================================
+        // PART 1 - Custom Delegates
+        // Assigned to: Marteja and Mendoza
+        // =========================================================
+
         public delegate void SystemAlert(string message, int severity);
 
         private void ConsoleLog(string message, int severity)
@@ -25,6 +30,10 @@ namespace FinalUi
             AppendLog("[LOG] Severity " + severity + ": " + message);
         }
 
+        // =========================================================
+        // PART 2 - Delegates and Interface
+        // Assigned to: Mallari and Joven
+        // =========================================================
 
         public interface IUpgradable
         {
@@ -35,13 +44,12 @@ namespace FinalUi
         {
             public void Upgrade()
             {
-       
+                // Upgrade logic
             }
         }
 
         private Engine engine = new Engine();
 
-   
         public delegate int DamageCalculator(int power);
 
         private int CalculateDamage(int power)
@@ -50,28 +58,34 @@ namespace FinalUi
             return calc(power);
         }
 
-    
+        // =========================================================
+        // PART 3 - Events
+        // Assigned to: Haquias and Planquero
+        // =========================================================
+
         public class CargoSystem
         {
             private EventHandler _onCargoReceived;
+
+            // =========================================================
+            // PART 4 - Event Accessors
+            // Assigned to: Ordonez and Lillio
+            // =========================================================
 
             public event EventHandler OnCargoReceived
             {
                 add
                 {
-                    // MEMBER 8
                     MessageBox.Show("Security check passed.");
                     _onCargoReceived += value;
                 }
                 remove
                 {
-                    // MEMBER 9
                     MessageBox.Show("Listener removed.");
                     _onCargoReceived -= value;
                 }
             }
 
-            // MEMBER 6
             public void ReceiveCargo()
             {
                 if (_onCargoReceived != null)
@@ -83,72 +97,80 @@ namespace FinalUi
 
         private CargoSystem cargo = new CargoSystem();
 
-  
         public Form1()
         {
             InitializeComponent();
-
-            // MEMBER 7 - Subscribe
             cargo.OnCargoReceived += CargoReceivedHandler;
         }
 
-        // MEMBER 7 - Event Handler
         private void CargoReceivedHandler(object sender, EventArgs e)
         {
             AppendLog("Cargo received! Processing started.");
         }
 
+        // =========================================================
+        // BUTTON EVENTS
+        // =========================================================
+
+        // Part 1 - Marteja
 
         private void btnConsoleAlert_Click(object sender, EventArgs e)
         {
-
             SystemAlert alert = ConsoleLog;
             alert("Engine failure!", 5);
-
         }
+
+        // Part 1 - Mendoza
 
         private void btnMulticastAlert_Click(object sender, EventArgs e)
         {
-
             SystemAlert alert = ConsoleLog;
-            alert += FileLog;          // Multicast
+            alert += FileLog;
             alert("Engine failure!", 5);
-
         }
+
+        // Part 2 - Joven
 
         private void btnUpgradeEngine_Click(object sender, EventArgs e)
         {
-
             engine.Upgrade();
             AppendLog("Engine upgraded!");
-
         }
+
+        // Part 2 - Mallari
 
         private void btnWeaponDamage_Click(object sender, EventArgs e)
         {
             int damage = CalculateDamage(10);
-            AppendLog($"Weapon Damage Calculated: {damage}");
+            AppendLog("Weapon Damage Calculated: " + damage);
         }
+
+        // Part 3 - Planquero / Haquias
 
         private void btnRecieveCargo_Click(object sender, EventArgs e)
         {
             cargo.ReceiveCargo();
         }
 
+        // Part 4 - Lillio
+
         private void btnUnsubscribeListener_Click(object sender, EventArgs e)
         {
             cargo.OnCargoReceived -= CargoReceivedHandler;
         }
 
-        private void AppendLog(string message)
-        {
-            textCommandLog.AppendText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine);
-        }
+        // Clear Log - Ordonez
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
             textCommandLog.Clear();
+        }
 
+        // Helper Method - Ordonez
+
+        private void AppendLog(string message)
+        {
+            textCommandLog.AppendText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + message + Environment.NewLine);
         }
 
         private void Form1_Load(object sender, EventArgs e)
