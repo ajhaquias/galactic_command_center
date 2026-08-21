@@ -58,11 +58,6 @@ namespace FinalUi
             return calc(power);
         }
 
-        // =========================================================
-        // PART 3 - Events
-        // Assigned to: Haquias and Planquero
-        // =========================================================
-
         public class CargoSystem
         {
             private EventHandler _onCargoReceived;
@@ -86,6 +81,13 @@ namespace FinalUi
                 }
             }
 
+
+            // =========================================================
+            // PART 3 - Events
+            // Assigned to: Haquias and Planquero
+            // =========================================================
+
+
             public void ReceiveCargo()
             {
                 if (_onCargoReceived != null)
@@ -107,6 +109,9 @@ namespace FinalUi
         {
             AppendLog("Cargo received! Processing started.");
         }
+
+
+
 
         // =========================================================
         // BUTTON EVENTS
