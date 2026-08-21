@@ -129,6 +129,7 @@ namespace FinalUi
             PART 3 - ReceiveCargo method
             Assigned to: Joven
         =========================================================
+
             public void ReceiveCargo()
             {
                 if (_onCargoReceived != null)
