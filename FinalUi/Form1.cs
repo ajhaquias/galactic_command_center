@@ -162,6 +162,7 @@ namespace FinalUi
         private void btnUnsubscribeListener_Click(object sender, EventArgs e)
         {
             cargo.OnCargoReceived -= CargoReceivedHandler;
+            Application.Exit();
         }
 
         // Clear Log - Ordonez
